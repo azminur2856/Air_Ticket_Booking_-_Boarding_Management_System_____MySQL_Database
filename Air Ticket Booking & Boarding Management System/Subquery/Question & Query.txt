@@ -1,0 +1,23 @@
+1.	Question: "Retrieve the agent name & salary who has the highest salary among all agents."
+Query: SELECT a_name AS "AGENT NAME", a_sal AS "SALARY" FROM agent WHERE a_sal = (SELECT MAX(a_sal) FROM agent);
+
+2.	Question: "Find the customer’s name who have purchased tickets with a fare greater than the average fare across all tickets."
+Query: SELECT c_name AS "CUSTOMER NAME" FROM customer WHERE c_id IN (SELECT c_id FROM ticket WHERE fare > (SELECT AVG(fare) FROM ticket));
+
+3.	Question: Find the names of customers whose names end with the letter 'n' and who have booked tickets with an amount greater than or equal to the average amount of tickets booked by agents whose names start with 'A'.
+Query:
+SELECT c.c_name AS "CUSTOMER NAME"
+FROM customer c
+WHERE c.c_name LIKE '%n' AND c.c_id IN (
+    SELECT t.c_id
+    FROM ticket t
+    WHERE t.amount >= (
+        SELECT AVG(amount)
+        FROM ticket
+        WHERE a_id IN (
+            SELECT a_id
+            FROM agent
+            WHERE a_name LIKE 'A%'
+        )
+    )
+);

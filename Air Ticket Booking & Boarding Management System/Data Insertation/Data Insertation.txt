@@ -1,0 +1,84 @@
+Manager:
+INSERT INTO manager(mgr_id, mgr_name, mgr_sal) VALUES(100, 'Kawser', 99999);
+INSERT INTO manager(mgr_id, mgr_name, mgr_sal) VALUES(200, 'Irom', 89999);
+INSERT INTO manager(mgr_id, mgr_name, mgr_sal) VALUES(300, 'Rushee', 60000);
+
+Manager contact:
+INSERT INTO manager_contact(mgr_phone, mgr_id) VALUES(01765238741, 100);
+INSERT INTO manager_contact(mgr_phone, mgr_id) VALUES(01768738741, 200);
+INSERT INTO manager_contact(mgr_phone, mgr_id) VALUES(01763438741, 300);
+
+Agent:
+INSERT INTO agent(a_id, a_name, a_sal, mgr_id) VALUES(459, 'Niloy', 30000, 100);
+INSERT INTO agent(a_id, a_name, a_sal, mgr_id) VALUES(588, 'Azminur', 45000, 300);
+INSERT INTO agent(a_id, a_name, a_sal, mgr_id) VALUES(625, 'Sakib', 40000, 200);
+INSERT INTO agent(a_id, a_name, a_sal, mgr_id) VALUES(615, 'Saikot', 35000, 200);
+
+Agent contact:
+INSERT INTO agent_contact(a_phone, a_id) VALUES(01763438778, 459);
+INSERT INTO agent_contact(a_phone, a_id) VALUES(01763438711, 588);
+INSERT INTO agent_contact(a_phone, a_id) VALUES(01763438767, 625);
+INSERT INTO agent_contact(a_phone, a_id) VALUES(01763438744, 615);
+
+Address:
+INSERT INTO address(cc_id, city, country) VALUES(10, 'Dhaka', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(20, 'Chittagong', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(30, 'Rajshahi', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(40, 'Khulna', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(50, 'Barishal', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(60, 'Sylhet', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(70, 'Rangpur', 'Bangladesh');
+INSERT INTO address(cc_id, city, country) VALUES(80, 'Mymensingh', 'Bangladesh');
+
+Customer:
+INSERT INTO customer(c_id, c_name, c_age, c_gender, pay_history, cc_id) VALUES(22466251, 'Shaon', 22, 'MALE', 9817, 30);
+INSERT INTO customer(c_id, c_name, c_age, c_gender, pay_history, cc_id) VALUES(22465881, 'Rahman', 22, 'MALE', 6591, 40);
+INSERT INTO customer(c_id, c_name, c_age, c_gender, pay_history, cc_id) VALUES(22464591, 'Nafiur', 69, 'MALE', 23221, 80);
+INSERT INTO customer(c_id, c_name, c_age, c_gender, pay_history, cc_id) VALUES(22464592, 'Kundu', 15, 'MALE', 21231, 30);
+
+Customer contact:
+INSERT INTO customer_contact(c_phone, c_id) VALUES(01954879621, 22465881);
+INSERT INTO customer_contact(c_phone, c_id) VALUES(01935489647, 22466251);
+INSERT INTO customer_contact(c_phone, c_id) VALUES(01821365482, 22464591);
+INSERT INTO customer_contact(c_phone, c_id) VALUES(01132654791, 22464592);
+
+Ticket:
+INSERT INTO ticket(t_id, amount, fare, departure, destination, p_date, d_date, baggage, a_id, c_id) VALUES(45698745, 1, 4699, 'DHK', 'JES', TO_DATE('08-05-2023', 'DD-MM-YYYY'), TO_DATE('15-05-2023', 'DD-MM-YYYY'), 20, 459, 22466251);
+INSERT INTO ticket(t_id, amount, fare, departure, destination, p_date, d_date, baggage, a_id, c_id) VALUES(45698565, 2, 9398, 'DHK', 'JES', TO_DATE('09-05-2023', 'DD-MM-YYYY'), TO_DATE('15-05-2023', 'DD-MM-YYYY'), 30, 588, 22465881);
+INSERT INTO ticket(t_id, amount, fare, departure, destination, p_date, d_date, baggage, a_id, c_id) VALUES(45698234, 2, 9398, 'DHK', 'JES', TO_DATE('11-05-2023', 'DD-MM-YYYY'), TO_DATE('15-05-2023', 'DD-MM-YYYY'), 50, 615, 22464591);
+
+Payment:
+INSERT INTO payment(pay_id, t_fare, c_id, t_id) VALUES(1578811645, 4699, 22466251, 45698745);
+INSERT INTO payment(pay_id, t_fare, c_id, t_id) VALUES(1578845682, 9398, 22465881, 45698565);
+INSERT INTO payment(pay_id, t_fare, c_id, t_id) VALUES(1574568214, 9398, 22464591, 45698234);
+
+Plane:
+INSERT INTO plane(pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity) VALUES(777, 13, 'DHK', TO_DATE('15-05-2023 09:30:00', 'DD-MM-YYYY HH24:MI:SS'), 'JES', 150);
+INSERT INTO plane(pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity) VALUES(787, 10, 'DHK', TO_DATE('17-05-2023 12:30:00', 'DD-MM-YYYY HH24:MI:SS'), 'CHI', 150);
+INSERT INTO plane(pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity) VALUES(666, 02, 'DHK', TO_DATE('19-05-2023 16:00:00', 'DD-MM-YYYY HH24:MI:SS'), 'RAJ', 150);
+
+Passenger:
+INSERT INTO passenger(p_id, p_name, p_gender, p_age, c_id, pl_id, cc_id) VALUES(22466251, 'Shaon', 'MALE', 22, 22466251, 777, 30);
+INSERT INTO passenger(p_id, p_name, p_gender, p_age, c_id, pl_id, cc_id) VALUES(22465881, 'Rahman', 'MALE', 22, 22465881, 777, 40);
+INSERT INTO passenger(p_id, p_name, p_gender, p_age, c_id, pl_id, cc_id) VALUES(22464591, 'Nafiur', 'MALE', 69, 22464591, 777, 80);
+INSERT INTO passenger(p_id, p_name, p_gender, p_age, c_id, pl_id, cc_id) VALUES(16989898, 'Neela', 'FEMALE', 18, 22464591, 777, 50);
+INSERT INTO passenger(p_id, p_name, p_gender, p_age, c_id, pl_id, cc_id) VALUES(51897848, 'Saikot', 'MALE', 25, 22465881, 777, 70);
+
+Passenger Contact:
+INSERT INTO passenger_contact(p_phone, p_id) VALUES(01935489647, 22466251);
+INSERT INTO passenger_contact(p_phone, p_id) VALUES(01954879621, 22465881);
+INSERT INTO passenger_contact(p_phone, p_id) VALUES(01821365482, 22464591);
+INSERT INTO passenger_contact(p_phone, p_id) VALUES(01334567890, 16989898);
+INSERT INTO passenger_contact(p_phone, p_id) VALUES(01434567890, 51897848);
+
+Seat:
+INSERT INTO seat(s_id, s_type, p_id, pl_id) VALUES(101, 'Standard', 22466251, 777);
+INSERT INTO seat(s_id, s_type, p_id, pl_id) VALUES(102, 'Business', 22465881, 777);
+INSERT INTO seat(s_id, s_type, p_id, pl_id) VALUES(503, 'Economy', 22464591, 777);
+INSERT INTO seat(s_id, s_type, p_id, pl_id) VALUES(504, 'Economy', 16989898, 777);
+INSERT INTO seat(s_id, s_type, p_id, pl_id) VALUES(103, 'Business', 51897848, 777);
+
+Route:
+INSERT INTO route(r_id, distance, pl_id) VALUES(100, '144 KM', 777);
+INSERT INTO route(r_id, distance, pl_id) VALUES(200, '227 KM', 787);
+INSERT INTO route(r_id, distance, pl_id) VALUES(300, '192 KM', 666);

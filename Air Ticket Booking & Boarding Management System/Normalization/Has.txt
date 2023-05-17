@@ -1,0 +1,13 @@
+•	Has
+UNF: s_id, s_type, pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+1NF: (No multivalued attribute)
+s_id, s_type, pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+2NF:
+I.	s_id, s_type, pl_id (fk)
+II.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+3NF: (No Transitive Dependency)
+I.	s_id, s_type, pl_id (fk)
+II.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+Table:
+1.	s_id, s_type, pl_id (fk)
+2.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity

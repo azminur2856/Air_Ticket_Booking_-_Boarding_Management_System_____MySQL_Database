@@ -1,0 +1,18 @@
+•	Boarding
+UNF: p_id, p_name, p_gender, p_age, city, country, p_phone, pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+1NF: (p_phone is a multivalued attribute)
+p_id, p_name, p_gender, p_age, city, country, p_phone, pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+2NF:
+I.	p_id, p_name, p_gender, p_age, city, country, pl_id (fk)
+II.	p_phone, p_id (fk)
+III.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+3NF: (Transitive Dependency)
+I.	p_id, p_name, p_gender, p_age, pl_id (fk)
+II.	city, country, p_id (fk)
+III.	p_phone, p_id (fk)
+IV.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+Table:
+1.	p_id, p_name, p_gender, p_age, pl_id (fk)
+2.	city, country, p_id (fk)
+3.	p_phone, p_id (fk)
+4.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity

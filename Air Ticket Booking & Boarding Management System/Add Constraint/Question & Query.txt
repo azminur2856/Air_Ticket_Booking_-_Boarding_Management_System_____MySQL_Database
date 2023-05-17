@@ -1,0 +1,5 @@
+Question: Add constraint in customer table payment history and it must be positive or 0 and not null. 
+Query:
+ALTER TABLE customer
+ADD CONSTRAINT check_pay_history_positive
+CHECK (pay_history >= 0 AND pay_history IS NOT NULL);

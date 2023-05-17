@@ -1,0 +1,24 @@
+1.	Equijoin
+Question: "Find customers who have passengers with the same gender as themselves."
+Query:
+SELECT c.c_name, c.c_gender, p.p_name, p.p_gender FROM customer c, passenger p WHERE c.c_id = p.c_id AND c.c_gender = p.p_gender;
+
+2.	Outer Join
+Left:
+Question: List all customers and their corresponding tickets, including those customers who do not have any tickets.
+Query:
+SELECT c.c_name, t.t_id FROM customer c, ticket t WHERE c.c_id = t.c_id (+);
+
+
+Right:
+Question: List all tickets and their corresponding customers, including those tickets that are not associated with any customer.
+Query:
+SELECT c.c_name, t.t_id FROM ticket t, customer c WHERE c.c_id (+) = t.c_id;
+
+3.	Self-Join
+Question: Retrieve the agent names and their corresponding manager names from the agent table where the agent is managed by another agent.
+Query:
+SELECT a1.a_name AS "Agent Name", a2.a_name AS "Manager Name"
+FROM agent a1, agent a2
+WHERE a1.mgr_id = a2.a_id;
+

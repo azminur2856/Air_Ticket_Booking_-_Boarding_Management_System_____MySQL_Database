@@ -1,0 +1,14 @@
+1.	Complex View
+Question: Create a complex view that combines information from multiple tables to provide a comprehensive overview of customers and their corresponding ticket details. 
+Query:
+CREATE VIEW customer_ticket_view AS
+SELECT c.c_id, c.c_name, t.t_id, t.amount, t.fare, t.departure, t.destination
+FROM customer c, ticket t
+WHERE c.c_id = t.c_id;
+
+2.	Simple View
+Question: Create a simple view that displays the names and salaries of managers.
+Query:
+CREATE VIEW manager_salary_view AS
+SELECT mgr_name, mgr_sal
+FROM manager;

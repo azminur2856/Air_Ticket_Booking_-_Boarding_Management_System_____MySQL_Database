@@ -1,0 +1,23 @@
+•	Buy As/For
+UNF: c_id, c_name, c_age, c_gender, city, country, c_phone, pay_history, p_id, p_name, p_gender, p_age, city, country, p_phone
+1NF: (c_phone, p_phone is a multivalued attribute)
+c_id, c_name, c_age, c_gender, city, country, c_phone, pay_history, p_id, p_name, p_gender, p_age, city, country, p_phone
+2NF:
+I.	c_id, c_name, c_age, c_gender, city, country, pay_history
+II.	c_phone, c_id (fk)
+III.	p_id, p_name, p_gender, p_age, city, country, c_id (fk)
+IV.	p_phone, p_id (fk)
+3NF: (Transitive Dependency)
+I.	c_id, c_name, c_age, c_gender, pay_history
+II.	city, country, c_id (fk)
+III.	c_phone, c_id (fk)
+IV.	p_id, p_name, p_gender, p_age, c_id (fk)
+V.	city, country, p_id (fk)
+VI.	p_phone, p_id (fk)
+Table:
+1.	c_id, c_name, c_age, c_gender, pay_history
+2.	city, country, c_id (fk)
+3.	c_phone, c_id (fk)
+4.	p_id, p_name, p_gender, p_age, c_id (fk)
+5.	city, country, p_id (fk)
+6.	p_phone, p_id (fk)

@@ -1,0 +1,30 @@
+1.	mgr_id, mgr_name, mgr_sal
+2.	mgr_phone, mgr_id (fk)
+3.	a_id, a_name, a_sal, mgr_id (fk)
+4.	a_phone, a_id (fk)
+5.	a_id, a_name, a_sal
+6.	a_phone, a_id (fk)
+7.	t_id, amount, fare, departure, destination, p_date, d_date, baggage, a_id (fk)
+8.	t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id (fk)
+9.	c_id, c_name, c_age, c_gender, pay_history
+10.	city, country, c_id (fk)
+11.	c_phone, c_id (fk)
+12.	pay_id, t_fare, c_id (fk), t_id (fk)
+13.	c_id, c_name, c_age, c_gender, pay_history
+14.	city, country, c_id (fk)
+15.	c_phone, c_id (fk)
+16.	p_id, p_name, p_gender, p_age, c_id (fk)
+17.	city, country, p_id (fk)
+18.	p_phone, p_id (fk)
+19.	p_id, p_name, p_gender, p_age, pl_id (fk)
+20.	city, country, p_id (fk)
+21.	p_phone, p_id (fk)
+22.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+23.	p_id, p_name, p_gender, p_age
+24.	city, country, p_id (fk)
+25.	p_phone, p_id (fk)
+26.	s_id, s_type, p_id (fk)
+27.	s_id, s_type, pl_id (fk)
+28.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+29.	pl_id, t_no, takeoff_airport, takeoff_time, d_airport, capacity
+30.	r_id, distance, pl_id (fk)

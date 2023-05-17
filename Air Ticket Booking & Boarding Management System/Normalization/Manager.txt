@@ -1,0 +1,19 @@
+•	Manages
+UNF: mgr_id, mgr_name, mgr_sal, mgr_phone, a_id, a_name, a_sal, a_phone
+1NF: (mgr_phone and a_phone is multivalued attribute)
+mgr_id, mgr_name, mgr_sal, mgr_phone, a_id, a_name, a_sal, a_phone
+2NF:
+I.	mgr_id, mgr_name, mgr_sal
+II.	mgr_phone, mgr_id (fk)
+III.	a_id, a_name, a_sal, mgr_id (fk)
+IV.	a_phone, a_id (fk)
+3NF: (No Transitive Dependency)
+I.	mgr_id, mgr_name, mgr_sal
+II.	mgr_phone, mgr_id (fk)
+III.	a_id, a_name, a_sal, mgr_id (fk)
+IV.	a_phone, a_id (fk)
+Tables:
+1.	mgr_id, mgr_name, mgr_sal
+2.	mgr_phone, mgr_id (fk)
+3.	a_id, a_name, a_sal, mgr_id (fk)
+4.	a_phone, a_id (fk)

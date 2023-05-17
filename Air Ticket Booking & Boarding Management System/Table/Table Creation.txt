@@ -1,0 +1,42 @@
+1.
+CREATE TABLE manager (mgr_id NUMBER(3) CONSTRAINT pk_manager PRIMARY KEY,mgr_name VARCHAR2(30) NOT NULL,mgr_sal FLOAT NOT NULL CONSTRAINT manager_sal check(mgr_sal between 50000 AND 100000));
+
+2.
+CREATE TABLE manager_contact(mgr_phone NUMBER(11) CONSTRAINT pk_mgr_contact PRIMARY KEY, mgr_id NUMBER(3) NOT NULL, CONSTRAINT fk_mgr_contact FOREIGN KEY(mgr_id) REFERENCES manager(mgr_id));
+
+3.
+CREATE TABLE agent(a_id NUMBER(3) CONSTRAINT pk_agent PRIMARY KEY, a_name VARCHAR2(30) NOT NULL, a_sal FLOAT NOT NULL CONSTRAINT agent_sal check(a_sal BETWEEN 20000 AND 50000), mgr_id NUMBER(3) NOT NULL, CONSTRAINT fk_agent FOREIGN KEY(mgr_id) REFERENCES manager(mgr_id));
+
+4.
+CREATE TABLE agent_contact(a_phone NUMBER(11) CONSTRAINT pk_agent_contact PRIMARY KEY, a_id NUMBER(3) NOT NULL, CONSTRAINT fk_agent_contact FOREIGN KEY(a_id) REFERENCES agent(a_id));
+
+5.
+CREATE TABLE address(cc_id NUMBER(3) CONSTRAINT pk_address PRIMARY KEY, city VARCHAR2(30) NOT NULL, country VARCHAR2(30) NOT NULL);
+
+6.
+CREATE TABLE customer(c_id NUMBER(10) CONSTRAINT pk_customer PRIMARY KEY, c_name VARCHAR2(30) NOT NULL, c_age NUMBER(3) NOT NULL CONSTRAINT c_age CHECK(c_age>0), c_gender VARCHAR2(6) NOT NULL CONSTRAINT c_gender CHECK (c_gender IN ('MALE', 'FEMALE', 'OTHERS')), pay_history NUMBER(10), cc_id NUMBER(3) NOT NULL, CONSTRAINT fk_address_customer FOREIGN KEY (cc_id) REFERENCES address(cc_id));
+
+7.
+CREATE TABLE customer_contact(c_phone NUMBER(11) CONSTRAINT pk_c_contact PRIMARY KEY, c_id NUMBER(10) NOT NULL, CONSTRAINT fk_c_contact FOREIGN KEY(c_id) REFERENCES customer(c_id));
+
+8.
+CREATE TABLE ticket(t_id NUMBER(10) CONSTRAINT pk_ticket PRIMARY KEY, amount NUMBER(2) NOT NULL, fare FLOAT NOT NULL, departure VARCHAR2(100) NOT NULL, destination VARCHAR2(100) NOT NULL, p_date DATE NOT NULL, d_date DATE NOT NULL, baggage NUMBER(2) NOT NULL, a_id NUMBER(3) NOT NULL, c_id NUMBER(10) NOT NULL, CONSTRAINT fk_agent_ticket FOREIGN KEY (a_id) REFERENCES agent (a_id),CONSTRAINT fk_customer_ticket FOREIGN KEY (c_id) REFERENCES customer (c_id));
+
+9.
+CREATE TABLE payment(pay_id NUMBER(10) CONSTRAINT pk_payment PRIMARY KEY, t_fare FLOAT NOT NULL, c_id NUMBER(10) NOT NULL, t_id NUMBER(10) NOT NULL, CONSTRAINT fk_customer_payment FOREIGN KEY (c_id) REFERENCES customer (c_id), CONSTRAINT fk_ticket_payment FOREIGN KEY (t_id) REFERENCES ticket(t_id));
+
+10.
+CREATE TABLE plane(pl_id NUMBER(3) CONSTRAINT pk_plane PRIMARY KEY, t_no NUMBER(3) NOT NULL, takeoff_airport VARCHAR2(100) NOT NULL, takeoff_time DATE NOT NULL, d_airport VARCHAR2(100) NOT NULL, capacity NUMBER(3) NOT NULL);
+
+11.
+CREATE TABLE passenger(p_id NUMBER(10) CONSTRAINT pk_passenger PRIMARY KEY, p_name VARCHAR2(30) NOT NULL, p_gender VARCHAR2(6) NOT NULL CONSTRAINT p_gender CHECK (p_gender IN ('MALE', 'FEMALE', 'OTHERS')), p_age NUMBER(3) NOT NULL CONSTRAINT p_age CHECK(p_age>0), c_id NUMBER(10) NOT NULL, pl_id NUMBER(3) NOT NULL, cc_id NUMBER(3) NOT NULL, CONSTRAINT fk_customer_passenger FOREIGN KEY (c_id) REFERENCES customer(c_id), CONSTRAINT fk_plane_passenger FOREIGN KEY (pl_id) REFERENCES plane (pl_id), CONSTRAINT fk_address_passenger FOREIGN KEY (cc_id) REFERENCES address(cc_id));
+
+
+12.
+CREATE TABLE passenger_contact(p_phone NUMBER(11) CONSTRAINT pk_p_contact PRIMARY KEY, p_id NUMBER(10) NOT NULL, CONSTRAINT fk_p_contact FOREIGN KEY(p_id) REFERENCES passenger(p_id));
+
+13.
+CREATE TABLE seat(s_id NUMBER(3) CONSTRAINT pk_seat PRIMARY KEY, s_type VARCHAR2(20) NOT NULL, p_id NUMBER(10) NOT NULL, pl_id NUMBER(3) NOT NULL, CONSTRAINT fk_passenger_seat FOREIGN KEY (p_id) REFERENCES passenger(p_id), CONSTRAINT fk_plane_seat FOREIGN KEY (pl_id) REFERENCES plane (pl_id));
+
+14.
+CREATE TABLE route(r_id NUMBER(3) CONSTRAINT pk_route PRIMARY KEY, distance VARCHAR2(10) NOT NULL, pl_id NUMBER(3) NOT NULL, CONSTRAINT fk_plane_route FOREIGN KEY (pl_id) REFERENCES plane (pl_id));

@@ -1,0 +1,21 @@
+•	Purchase
+UNF: t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id, c_name, c_age, c_gender, city, country, c_phone, pay_history, pay_id, t_fare
+1NF: (c_phone is a multivalued attribute)
+t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id, c_name, c_age, c_gender, city, country, c_phone, pay_history, pay_id, t_fare
+2NF:
+I.	t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id (fk)
+II.	c_id, c_name, c_age, c_gender, city, country, pay_history
+III.	c_phone, c_id (fk)
+IV.	pay_id, t_fare, c_id (fk), t_id (fk)
+3NF: (Transitive Dependency)
+I.	t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id (fk)
+II.	c_id, c_name, c_age, c_gender, pay_history
+III.	city, country, c_id (fk)
+IV.	c_phone, c_id (fk)
+V.	pay_id, t_fare, c_id (fk), t_id (fk)
+Tables:
+1.	t_id, amount, fare, departure, destination, p_date, d_date, baggage, c_id (fk)
+2.	c_id, c_name, c_age, c_gender, pay_history
+3.	city, country, c_id (fk)
+4.	c_phone, c_id (fk)
+5.	pay_id, t_fare, c_id (fk), t_id (fk)

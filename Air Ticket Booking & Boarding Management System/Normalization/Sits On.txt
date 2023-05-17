@@ -1,0 +1,18 @@
+•	Sits On
+UNF: p_id, p_name, p_gender, p_age, city, country, p_phone, s_id, s_type
+1NF: (p_phone is a multivalued attribute)
+p_id, p_name, p_gender, p_age, city, country, p_phone, s_id, s_type
+2NF:
+I.	p_id, p_name, p_gender, p_age, city, country
+II.	p_phone, p_id (fk)
+III.	s_id, s_type, p_id (fk)
+3NF: (Transitive Dependency)
+I.	p_id, p_name, p_gender, p_age
+II.	city, country, p_id (fk)
+III.	p_phone, p_id (fk)
+IV.	s_id, s_type, p_id (fk)
+Table:
+1.	p_id, p_name, p_gender, p_age
+2.	city, country, p_id (fk)
+3.	p_phone, p_id (fk)
+4.	s_id, s_type, p_id (fk)
